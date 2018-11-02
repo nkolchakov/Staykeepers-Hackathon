@@ -12,9 +12,12 @@ class Kotka:
         self.name = name
         self.age = age
 
-# Create a URL route in our application for "/"
-@app.route('/katze')
+@app.route('/')
 def home():
+    return '( ͡° ͜ʖ ͡°)  Hii'
+
+@app.route('/katze')
+def katze():
     k = Kotka("kotka",12)
     return jsonify(k.__dict__)
 
