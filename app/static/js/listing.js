@@ -1,38 +1,4 @@
-// const listing = '{{ listing }}';
-const listing = {
-  guests: 5,
-  bedrooms: 3,
-  beds: 4,
-  baths: 2,
-  lat: 42.6977,
-  lng: 23.3219,
-  address: 'Random Address, Sofia, Bulgaria',
-  landmarks: [{
-    title: 'Sveta Sofia',
-    lat: 42.696522,
-    lng: 23.331367,
-  }, {
-    title: 'Aleksandar Nevski',
-    lat: 42.695808,
-    lng: 23.332794,
-  }],
-  events: [{
-    title: 'RIP',
-    date: {
-      year: 2018,
-      month: 10,
-      day: 2,
-    }
-  }, {
-    title: 'Hello World',
-    date: {
-      year: 2018,
-      month: 10,
-      day: 11,
-    }
-  }],
-  rating: 3.5,
-}; // TEMP
+const listing = '{{ listing }}';
 const { guests, bedrooms, beds, baths, lat, lng, address, landmarks, events, rating } = listing;
 
 // rating
@@ -78,15 +44,39 @@ const radarChart = new Chart(radarChartElement, {
 });
 
 // calendar
-const calendarElement = document.getElementById('caleandar');
-const calendarEvents = events.map(event => ({
-  Date: new Date(event.date.year, event.date.month, event.date.day),
-  Title: event.title,
-}));
-caleandar(calendarElement, calendarEvents);
+const checkIfDateIsUnavailable = (date) => {
+  for (let event of events) {
+    const eventDate = event.date;
+    if (eventDate.year === date.year && eventDate.month === date.month && eventDate.day === date.day) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+$('#calendar').daterangepicker({
+  isInvalidDate: (date) => {
+    var year = date._d.getUTCFullYear();
+    var month = date._d.getUTCMonth() + 1;
+    var day = date._d.getUTCDate() + 1;
+
+    return checkIfDateIsUnavailable({
+      year,
+      month,
+      day,
+    });
+  },
+});
 
 // google maps
 function initMap() {
+  google.maps.Map.prototype.clearActiveInfoWindow = function() {
+    if (this.activeInfoWindow) {
+      this.activeInfoWindow.close()
+    }
+  };
+
   const position = { lat, lng };
 
   const mapElement = document.getElementById('map');
@@ -95,15 +85,29 @@ function initMap() {
     zoom: 13,
   });
 
-  const marker = new google.maps.Marker({
-    position,
-    map,
-    title: address,
-  });
+  const addMarkerWithInfoWindow = (markerPosition, infoWindowContent, display) => {
+    const marker = new google.maps.Marker({
+      position: markerPosition,
+      map,
+    });
 
-  const landmarkMarkers = landmarks.map(landmark => new google.maps.Marker({
-    position: { lat: landmark.lat, lng: landmark.lng },
-    map,
-    title: landmark.title,
-  }));
+    const infoWindow = new google.maps.InfoWindow({
+      content: infoWindowContent,
+    });
+
+    if (display) {
+      infoWindow.open(map, marker);
+      google.maps.Map.prototype.activeInfoWindow = infoWindow;
+    }
+
+    marker.addListener('click', function() {
+      google.maps.Map.prototype.clearActiveInfoWindow();
+      infoWindow.open(map, marker);
+      google.maps.Map.prototype.activeInfoWindow = infoWindow;
+    });
+  }
+
+  addMarkerWithInfoWindow(position, address, true);
+
+  landmarks.map(landmark => addMarkerWithInfoWindow({ lat: landmark.lat, lng: landmark.lng }, landmark.title));
 }
