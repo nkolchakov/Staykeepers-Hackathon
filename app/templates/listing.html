@@ -55,7 +55,7 @@
         {% if loop.first %}
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         {% else %}
-        <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index }}"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index - 1 }}"></li>
         {% endif %}
         {% endfor %}
       </ol>
