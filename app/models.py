@@ -76,6 +76,20 @@ class Listing(db.Model):
     beds = db.Column(db.Integer, nullable = False)
     baths = db.Column(db.Integer, nullable = False)
 
+    def __int__(self, price, address, lat, lon, rating, createdDate, descr, guests, bedrooms, beds, baths):
+        self.price = price
+        self.address =address
+        self.latitude = lat
+        self.longitude = lon
+        self.rating = rating
+        self.createdDate = createdDate
+        self.description = descr
+        self.isDeleted = 0
+        self.guests = guests
+        self.bedrooms = bedrooms
+        self.beds = beds,
+        self.baths = baths
+
     def save(self):
         db.session.add(self)
         db.session.commit()
@@ -90,6 +104,10 @@ class Event(db.Model):
 
     #Listing FK
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
+
+    def __init__(self, title, createdDate):
+        self.title = title
+        self.createdDate = createdDate
 
     def save(self):
         db.session.add(self)
@@ -106,6 +124,9 @@ class Image(db.Model):
     # FK Listing
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
 
+    def __init__(self, image_path):
+        self.image_path = image_path
+
     def save(self):
         db.session.add(self)
         db.session.commit()
@@ -120,6 +141,9 @@ class Amenity(db.Model):
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
 
     goody_title = db.Column(db.String(200), nullable = False)
+
+    def __init__(self, title):
+        self.goody_title = title
 
     def save(self):
         db.session.add(self)
