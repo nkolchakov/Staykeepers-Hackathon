@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../static/css/listing.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/w3.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
+</head>
+
+<body>
+  <!-- header -->
+  <div class="w3-top">
+    <div class="w3-row w3-large w3-light-grey">
+      <div class="w3-col s4">
+        <a href="#" class="w3-button w3-block">Home</a>
+      </div>
+      {% if loggedIn %}
+      <div class="w3-col s4">
+        <a href="#profile" class="w3-button w3-block">Profile</a>
+      </div>
+      <div class="w3-col s4">
+        <a href="#" class="w3-button w3-block">Logout</a>
+      </div>
+      {% else %}
+      <div class="w3-col s4">
+        <a href="#register" class="w3-button w3-block">Register</a>
+      </div>
+      <div class="w3-col s4">
+        <a href="#login" class="w3-button w3-block">Login</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <!-- title -->
+  <h1>{{ listing.title }} created by {{ listing.user.name }}</h1>
+  <h3>${{ listing.price }} per night</h3>
+  <!-- images -->
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      {% for image in listing.images %}
+      <div class="carousel-item">
+        <img class="d-block w-100" src="{{ image }}">
+      </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- radar chart -->
+    <canvas id="radarChart"></canvas>
+    <!-- amenities -->
+    <ul class="list-group list-group-flush">
+      {% for amenity in listing.amenities %}
+      <li class="list-group-item">{{ amenity }}</li>
+      {% endfor %}
+    </ul>
+    <!-- google maps -->
+    <div id="map"></div>
+    <!-- calendar -->
+    <div id="caleandar"></div>
+    <!-- rating -->
+    <div class="stars-outer">
+      <div id="rating" class="stars-inner"></div>
+    </div>
+    <!-- description -->
+    <p class="lead">{{ listing.description }}</p>
+    <!-- footer -->
+    <footer class="w3-container w3-padding-32 w3-light-grey w3-center">
+      <div class="w3-xlarge w3-section">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fa fa-twitter w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+      </div>
+      <p>Powered by XPNCTO</p>
+    </footer>
+    <script type="text/javascript" src="../static/js/listing.js"></script>
+    <script type="text/javascript" src="../static/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/lib/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/lib/caleandar.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdbRh892KJkBoUWIK46-E7oEnFh2fxDPc&libraries=places&callback=initMap">
+    </script>
+</body>
+
+</html>
