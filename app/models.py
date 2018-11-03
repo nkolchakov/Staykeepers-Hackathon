@@ -1,9 +1,6 @@
-from server import db, app
-from flask_bcrypt import Bcrypt
+from server import db, bcrypt
 from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 
-
-bcrypt = Bcrypt(app)
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -23,15 +20,6 @@ class User(db.Model):
         self.username = username
         self.password = password
         self.email = email
-
-    @classmethod
-    def seed(cls, fake):
-        user = User(
-            username = fake.state(),
-            email = fake.email(),
-            password = cls.encrypt_password(fake.password()),
-        )
-        user.save()
 
     @staticmethod
     def encrypt_password(password):
@@ -76,6 +64,20 @@ class Listing(db.Model):
     beds = db.Column(db.Integer, nullable = False)
     baths = db.Column(db.Integer, nullable = False)
 
+    def __int__(self, price, address, lat, lon, rating, createdDate, descr, guests, bedrooms, beds, baths):
+        self.price = price
+        self.address =address
+        self.latitude = lat
+        self.longitude = lon
+        self.rating = rating
+        self.createdDate = createdDate
+        self.description = descr
+        self.isDeleted = 0
+        self.guests = guests
+        self.bedrooms = bedrooms
+        self.beds = beds,
+        self.baths = baths
+
     def save(self):
         db.session.add(self)
         db.session.commit()
@@ -90,6 +92,10 @@ class Event(db.Model):
 
     #Listing FK
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
+
+    def __init__(self, title, createdDate):
+        self.title = title
+        self.createdDate = createdDate
 
     def save(self):
         db.session.add(self)
@@ -106,6 +112,9 @@ class Image(db.Model):
     # FK Listing
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
 
+    def __init__(self, image_path):
+        self.image_path = image_path
+
     def save(self):
         db.session.add(self)
         db.session.commit()
@@ -115,13 +124,14 @@ class Amenity(db.Model):
     __tablename__ = 'amenities'
 
     id = db.Column(db.Integer, primary_key = True)
+    goody_title = db.Column(db.String(200), nullable = False)
     
     # Listing FK
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
 
-    goody_title = db.Column(db.String(200), nullable = False)
+    def __init__(self, title):
+        self.goody_title = title
 
     def save(self):
         db.session.add(self)
         db.session.commit()
-
