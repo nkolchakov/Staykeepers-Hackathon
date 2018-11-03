@@ -57,7 +57,7 @@ def createUser():
     user = User(
                 username = fake.word(ext_word_list=None),
                 email = fake.email(),
-                password = User.encrypt_password(fake.password()),
+                password = User.encrypt_password('asd123'),
     )
     return user
 
@@ -88,5 +88,4 @@ listing.images.append(createImage())
 listing.images.append(createImage())
 listing2.images.append(createImage())
 
-
-db.session.commit()
+# db.session.commit()
