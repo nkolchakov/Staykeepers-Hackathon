@@ -19,11 +19,13 @@ from models import *
 
 @app.route('/')
 def home():
-    return '( ͡° ͜ʖ ͡°)  Hii'
+    return render_template('listing.html', listing = { "landmarks": [{"lat":-80.3888495 , "lng": -100.445735, "title": "Hi"}], "lat":-80.3888495 , "lng": -100.445735, "user":{"name":"name"}, "images":["../static/imgs/1.png","../static/imgs/2.png"]})
 
 @app.route('/katze')
 def katze():
     return 'Kotka'
+
+
 
 # If we're running in stand alone mode, run the application
 if __name__ == '__main__':

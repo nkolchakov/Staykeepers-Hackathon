@@ -1,4 +1,8 @@
-const listing = '{{ listing }}';
+// jQuery
+const jsonStr = $("#varContainer").data("listing").replace(/\'/g, '"');
+var listing = JSON.parse(jsonStr);
+console.log(listing)
+
 const { guests, bedrooms, beds, baths, lat, lng, address, landmarks, events, rating } = listing;
 
 // rating
