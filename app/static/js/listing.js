@@ -22,7 +22,7 @@ const data = {
     backgroundColor: colorWithAlpha,
     borderColor: color,
     pointBackgroundColor: color,
-    data: datasetData,
+    data: datasetData
   }],
 };
 

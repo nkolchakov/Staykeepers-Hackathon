@@ -42,8 +42,14 @@
   <!-- content -->
   <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
     <!-- title -->
-    <h1>{{ listing.title }} created by {{ listing.user.name }}</h1>
-    <h3>${{ listing.price }} per night</h3>
+    <h1 id="listingTitle" class="display-4">
+      <i class="fa fa-hotel" aria-hidden="true"></i>        
+      {{ listing.title }}</h1> 
+    <h1 id="listingOwner" class="text-secondary"> created by <strong style="font-style: oblique">{{ listing.user.name }}</strong> </h1>
+
+    <h3>
+        <i class="fa fa-eur" aria-hidden="true"></i>        
+      <span class="display-4" style="font-size:35px">{{ listing.price }}</span>  per night</h3>
     <!-- rating -->
     <div class="stars-outer">
       <div id="rating" class="stars-inner"></div>
@@ -84,16 +90,30 @@
         <!-- radar chart -->
         <canvas id="radarChart"></canvas>
         <!-- amenities -->
-        <ul class="list-group list-group-flush">
-          {% for amenity in listing.amenities %}
-          <li class="list-group-item">{{ amenity }}</li>
-          {% endfor %}
-        </ul>
+        <hr>
+        <div id="amenitiesPanel">
+          <h3 class="text-center display-4">
+          <i class="fa fa-heart-o" aria-hidden="true"></i>
+            Amentities</h2>
+          <ul class="list-group list-group-flush">
+            {% for amenity in listing.amenities %}
+            <li class="list-group-item">{{ amenity }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <hr>
         <!-- description -->
-        <h2 class="text-center">Description:</h2>
-        <p class="lead">{{ listing.description }}</p>
-        <!-- calendar -->
-        <div>Pick dates: <input type="text" id="calendar" style="width: 240px;"><button type="button">Reserve!</button></div>
+        <div id="descrPanel">
+            <h2 id="descrTitle" class="text-center display-4">Description:</h2>
+            <p  class="lead text-secondary">{{ listing.description }}</p>
+            <!-- calendar -->
+            <p >Pick dates:
+               <input type="text" class="form-control" id="calendar" style="width: 240px; display:inline-block">
+              <button class="btn btn-info" type="button">Reserve!</button>
+            </p>
+            <hr>
+        </div>
+        
         <!-- google maps -->
         <div id="map"></div>
       </div>

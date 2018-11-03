@@ -44,6 +44,9 @@ h4 {
   width: 600px;
   height: 400px;
   margin-top: 50px;
+  display: inline-block;
+  max-width:50%;
+  float: right;
 }
 
 /*google maps*/
@@ -55,4 +58,48 @@ h4 {
 /*footer*/
 .fa {
   cursor: pointer
+}
+
+#carouselExampleIndicators{
+  max-height: 350px;
+}
+
+
+.carousel-item {
+  max-height: 350px;
+}
+
+#amenitiesPanel {
+  display: inline-block;
+}
+
+.fa .fa-heart-o{
+  display: inline-block;
+}
+
+#descrTitle, h3.text-center.display-4{
+  font-size: 38px;
+}
+
+.list-group-item{
+  font-style: oblique;
+  text-align: center;
+}
+
+#descrPanel{
+  text-align: justify ;
+  width:80%;
+  margin:auto;
+}
+
+.fa-heart-o{
+  cursor: auto;  
+}
+
+#listingTitle{
+
+}
+
+#listingOwner{
+  font-size: 19px;
 }
