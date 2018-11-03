@@ -45,7 +45,7 @@ h4 {
   height: 400px;
   margin-top: 50px;
   display: inline-block;
-  max-width:50%;
+  max-width: 50%;
   float: right;
 }
 
@@ -55,12 +55,7 @@ h4 {
   height: 500px;
 }
 
-/*footer*/
-.fa {
-  cursor: pointer
-}
-
-#carouselExampleIndicators{
+#carouselExampleIndicators {
   max-height: 350px;
 }
 
@@ -73,37 +68,33 @@ h4 {
   display: inline-block;
 }
 
-.fa .fa-heart-o{
+.fa .fa-heart-o {
   display: inline-block;
 }
 
-#descrTitle, h3.text-center.display-4{
+#descrTitle,
+h3.text-center.display-4 {
   font-size: 38px;
 }
 
-.list-group-item{
+.list-group-item {
   font-style: oblique;
   text-align: center;
 }
 
-#descrPanel{
-  text-align: justify ;
-  width:80%;
-  margin:auto;
+#descrPanel {
+  text-align: justify;
+  width: 80%;
+  margin: auto;
 }
 
-.fa-heart-o{
-  cursor: auto;  
-}
+#listingTitle {}
 
-#listingTitle{
-
-}
-
-#listingOwner{
+#listingOwner {
   font-size: 19px;
 }
- 
-div.stars-inner, div.stars-outer{
+
+div.stars-inner,
+div.stars-outer {
   font-size: 50px;
 }
