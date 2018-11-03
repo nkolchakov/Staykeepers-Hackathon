@@ -1,5 +1,5 @@
 const listing = '{{ listing }}';
-const { guests, bedrooms, beds, baths, lat, lng, address, landmarks, events, rating } = listing;
+const { guests = 1, bedroom = 1, beds = 1, baths = 1, lat = 51.5136, lng = 23.3219, address = 'SOHO', landmarks = [], events = [], rating = 5 } = listing;
 
 // rating
 const starPercentage = (rating / 5) * 100;
