@@ -1,20 +1,21 @@
-from flask import (
-    Flask,
-    render_template,
-    jsonify
-)
+from flask import Flask, render_template, jsonify
+from flask_restful import Api,Resource
+from flask_sqlalchemy import SQLAlchemy
+import json
 
 # Create the application instance
 app = Flask(__name__, template_folder="templates")
+api = Api(app)
 
-class Kotka:
-    def __init__(self,name, age):
-        self.name = name
-        self.age = age
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///winwin.sqlite3'
+
+db = SQLAlchemy(app)
+
+from models import *
 
 @app.route('/')
 def home():
-    return '( ͡° ͜ʖ ͡°)  Hii'
+    return 'Hi'
 
 @app.route('/katze')
 def katze():
