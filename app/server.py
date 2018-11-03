@@ -28,6 +28,7 @@ def home():
   "landmarks": [{ "lat": -80.3888495, "lng": -100.445735, "title": "Hi" }],
   "lat": -80.3888495,
   "lng": -100.445735,
+  "rating": 2.8,
   "user": { "name": "name" },
   "images": ["../static/imgs/1.png", "../static/imgs/2.png", "../static/imgs/3.png", "../static/imgs/4.png"],
   "amenities": ["test", "test1", "test2", "test3", "test4"],

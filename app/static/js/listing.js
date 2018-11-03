@@ -14,7 +14,7 @@ ratingElement.style.width = starPercentageRounded;
 // radar chart
 const color = 'rgb(153, 102, 255)';
 const colorWithAlpha = 'rgba(153, 102, 255, 0.2)';
-const labels = ['Guests', 'Bedrooms', 'Beds', 'Baths'];
+const labels = ['🧙🏻‍♂️ Guests', '🛏 Bedrooms', '🛌 Beds', '🛀🏻 Baths'];
 const datasetData = [guests, bedrooms, beds, baths];
 const data = {
   labels,
