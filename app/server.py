@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from flask_restful import Api,Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -15,10 +15,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///winwin.sqlite3'
 bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 
+import dataprovider
 from models import *
 
-@app.route('/')
+@app.route('/listing')
 def home():
+    id = request.args.get('id')
+    listing = dataprovider.getListingById(id)
+
+    return jsonify(listing.address)
+
     return render_template('listing.html', listing = {
   "title": "test",
   "price": 44.5,
@@ -35,6 +41,11 @@ def home():
 @app.route('/katze')
 def katze():
     return 'Kotka'
+
+@app.route('/listings')
+def listings():
+    listings = dataprovider.getListings()
+    return jsonify(len(listings))
 
 
 
