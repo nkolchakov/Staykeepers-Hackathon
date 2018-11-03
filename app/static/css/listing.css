@@ -103,3 +103,7 @@ h4 {
 #listingOwner{
   font-size: 19px;
 }
+ 
+div.stars-inner, div.stars-outer{
+  font-size: 50px;
+}
