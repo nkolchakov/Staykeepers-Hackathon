@@ -24,15 +24,6 @@ class User(db.Model):
         self.password = password
         self.email = email
 
-    @classmethod
-    def seed(cls, fake):
-        user = User(
-            username = fake.state(),
-            email = fake.email(),
-            password = cls.encrypt_password(fake.password()),
-        )
-        user.save()
-
     @staticmethod
     def encrypt_password(password):
         return bcrypt.generate_password_hash(password).decode('utf-8')
@@ -136,11 +127,10 @@ class Amenity(db.Model):
     __tablename__ = 'amenities'
 
     id = db.Column(db.Integer, primary_key = True)
+    goody_title = db.Column(db.String(200), nullable = False)
     
     # Listing FK
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
-
-    goody_title = db.Column(db.String(200), nullable = False)
 
     def __init__(self, title):
         self.goody_title = title
@@ -148,4 +138,3 @@ class Amenity(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
-
