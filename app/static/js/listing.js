@@ -113,5 +113,6 @@ function initMap() {
 
   addMarkerWithInfoWindow(position, address, true);
 
+  // locationType - park, river
   landmarks.map(landmark => addMarkerWithInfoWindow({ lat: landmark.lat, lng: landmark.lng }, landmark.title));
 }
