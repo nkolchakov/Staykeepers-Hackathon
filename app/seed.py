@@ -3,10 +3,10 @@ from server import db
 from models import *
 
 pathImages = [
-    'D:\staysee\\app\static\imgs\\1.png',
-    'D:\staysee\\app\static\imgs\\2.png',
-    'D:\staysee\\app\static\imgs\\3.png',
-    'D:\staysee\\app\static\imgs\\4.png'
+    '../static/imgs/1.png',
+    '../static/imgs/2.png',
+    '../static/imgs/3.png',
+    '../static/imgs/4.png'
 ]
 
 fake = Faker()
@@ -47,7 +47,7 @@ def createImage():
     return image
 
 def createAmenity():
-    amenity = Amentiy(
+    amenity = Amenity(
         goody_title = fake.word(ext_word_list=None)
     )
     return amenity
@@ -67,7 +67,10 @@ user = createUser()
 db.session.add(user)
 
 listing = createListing()
+listing.images = [createImage() for i in range(0,5)]
+
 listing2 = createListing()
+listing2.images = [createImage() for i in range(0,5)]
 
 print(listing.isDeleted)
 

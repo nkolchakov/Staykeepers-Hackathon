@@ -130,8 +130,8 @@ class Amenity(db.Model):
     # Listing FK
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
 
-    def __init__(self, title):
-        self.goody_title = title
+    def __init__(self, goody_title):
+        self.goody_title = goody_title
 
     def save(self):
         db.session.add(self)
