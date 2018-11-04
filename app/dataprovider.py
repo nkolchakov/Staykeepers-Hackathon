@@ -132,8 +132,8 @@ def getLandmarks(lat, lng):
         mapped = {
             'lat': lat, 
             'lng': lng, 
-            'title': title.encode('utf-8'), 
-            'locationType': locationType.encode('utf-8')
+            'title': 'Landmark', 
+            'locationType': locationType
         }
         print(mapped)
         r.append(mapped)
