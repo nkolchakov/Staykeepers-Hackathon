@@ -1,5 +1,6 @@
 let mapNotShown = true;
 let marker;
+let imagesCounter = 1;
 
 function initMap() {
   const position = { lat: 42.6977, lng: 23.3219 };
@@ -36,7 +37,7 @@ function initMap() {
 $('#newImageBtn').click(function(e) {
   e.preventDefault();
 
-  $('#imagesForm').append('<input type="file" class="form-control-file" id="imageUpload" aria-describedby="fileHelp" name="image">');
+  $('#imagesForm').append(`<input type="file" class="form-control-file" id="imageUpload" aria-describedby="fileHelp" name="image${imagesCounter++}">`);
 });
 
 $('#newAmenityBtn').click(function(e) {
