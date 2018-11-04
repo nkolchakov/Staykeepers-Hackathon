@@ -36,7 +36,7 @@ function initMap() {
 $('#newImageBtn').click(function(e) {
   e.preventDefault();
 
-  $('#imagesForm').append('<input type="file" class="form-control-file" id="imageUpload" aria-describedby="fileHelp">');
+  $('#imagesForm').append('<input type="file" class="form-control-file" id="imageUpload" aria-describedby="fileHelp" name="image">');
 });
 
 $('#newAmenityBtn').click(function(e) {
