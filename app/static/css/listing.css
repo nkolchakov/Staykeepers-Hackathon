@@ -96,3 +96,7 @@ div.stars-inner,
 div.stars-outer {
   font-size: 50px;
 }
+
+.list-group-flush {
+  height: 250px;
+}
