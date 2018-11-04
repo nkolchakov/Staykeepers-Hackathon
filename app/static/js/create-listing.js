@@ -56,5 +56,5 @@ $('#selectLocation').click(function(e) {
 });
 
 $('#listingForm').ajaxForm(function() {
-  window.location.href = "/test";
+  window.location.href = "/";
 });

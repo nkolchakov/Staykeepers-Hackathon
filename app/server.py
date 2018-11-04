@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect
 from flask_restful import Api,Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -45,10 +45,7 @@ def create():
     d = request.form.to_dict(flat=False)
 
     dataprovider.createListing(d)
-
-    print(d)
-
-    return jsonify()
+    return redirect("/", code=302)
 
 
 # If we're running in stand alone mode, run the application
