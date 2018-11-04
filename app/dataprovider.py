@@ -1,6 +1,7 @@
 from models import *
 from server import db
 from random import randint
+from random import shuffle
 import requests
 import json
 import datetime
@@ -52,6 +53,7 @@ def createListing(data):
         image = Image(image_path=i)
         images.append(image)
     
+    shuffle(images)
     listing.amenities = amenities
     listing.images = images
 
