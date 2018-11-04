@@ -9,6 +9,7 @@ function initMap() {
   const map = new google.maps.Map(mapElement, {
     center: position,
     zoom: 13,
+    clickableIcons: false,
   });
 
   function placeMarker(location) {

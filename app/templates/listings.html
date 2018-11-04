@@ -49,10 +49,10 @@
           {% if loop.first %}
           <div class="carousel-item col-md-4 active">
             <div class="card">
-              <img class="card-img-top img-fluid" src="{{ listing.images[0] }}" alt="Card image cap">
+              <img class="card-img-top img-fluid" src="{{ listing.images[0] }}" alt=" No image">
               <div class="card-body">
                 <a href="/listing?id={{ listing.id }}">
-                <h4 class="card-title display-4">{{ loop.index }}<i class="fa fa-hotel" aria-hidden="true"></i> {{ listing.title }}</h4>
+                <h4 class="card-title">{{ loop.index }}<i class="fa fa-hotel" aria-hidden="true"></i> {{ listing.title }}</h4>
                 </a>
                 <h3>
                   <i class="fa fa-eur" aria-hidden="true" style="font-size:20px"></i><span style="font-size:20px"><strong>{{ listing.price }}</strong></span> per night
@@ -66,10 +66,10 @@
           {% else %}
           <div class="carousel-item col-md-4">
             <div class="card">
-              <img class="card-img-top img-fluid" src="{{ listing.images[0] }}" alt="Card image cap">
+              <img class="card-img-top img-fluid" src="{{ listing.images[0] }}" alt=" No image">
               <div class="card-body">
                 <a href="/listing?id={{ listing.id }}">
-                <h4 class="card-title display-4">{{ loop.index }}<i class="fa fa-hotel" aria-hidden="true"></i> {{ listing.title }}</h4>
+                <h4 class="card-title">{{ loop.index }}<i class="fa fa-hotel" aria-hidden="true"></i> {{ listing.title }}</h4>
                 </a>
                 <h3>
                   <i class="fa fa-eur" aria-hidden="true" style="font-size:20px"></i><span style="font-size:20px"><strong>{{ listing.price }}</strong></span> per night
@@ -93,7 +93,7 @@
     </a>
       </div>
     </div>
-    <a href='/createListing' id="createListing" type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-list-ul"></i> Create Listing</a>
+    <button onclick="location.href = './createListing';" id="createListing" type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-list-ul"></i> Create Listing</button>
   </div>
   <!-- footer -->
   <footer class="w3-container w3-padding-32 w3-light-grey w3-center">

@@ -15,7 +15,7 @@ class User(db.Model):
 
     # Many Listings
     listings = db.relationship('Listing', backref='user')
-    
+
     def __init__(self, username, password, email):
         self.username = username
         self.password = password
@@ -77,7 +77,7 @@ class Listing(db.Model):
         self.bedrooms = bedrooms
         self.beds = beds,
         self.baths = baths
-    
+
 
     def save(self):
         db.session.add(self)
@@ -86,7 +86,7 @@ class Listing(db.Model):
 
 class Event(db.Model):
     __tablename__ = 'events'
-    
+
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(250), nullable = False)
     createdDate = db.Column(db.Date, nullable = False)
@@ -104,7 +104,7 @@ class Event(db.Model):
 
 class Image(db.Model):
     __tablename__ = 'images'
-    
+
     id = db.Column(db.Integer, primary_key = True)
     image_path = db.Column(db.String(350), nullable = False)
     # FK User
@@ -126,12 +126,12 @@ class Amenity(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     goody_title = db.Column(db.String(200), nullable = False)
-    
+
     # Listing FK
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
 
-    def __init__(self, title):
-        self.goody_title = title
+    def __init__(self, goody_title):
+        self.goody_title = goody_title
 
     def save(self):
         db.session.add(self)
