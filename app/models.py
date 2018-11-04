@@ -53,8 +53,8 @@ class Listing(db.Model):
     # Many Images
     images = db.relationship('Image', backref='listing')
 
-    # Many Amedities
-    amedities = db.relationship('Amenity', backref='listing')
+    # Many amentities
+    amenities = db.relationship('Amenity', backref='listing')
 
     createdDate = db.Column(db.Date, nullable = False)
     description = db.Column(db.String(350), nullable = False)
@@ -77,6 +77,7 @@ class Listing(db.Model):
         self.bedrooms = bedrooms
         self.beds = beds,
         self.baths = baths
+    
 
     def save(self):
         db.session.add(self)
