@@ -19,21 +19,21 @@
   <div class="w3-top">
     <div class="w3-row w3-large w3-light-grey">
       <div class="w3-col s4">
-        <a href="#" class="w3-button w3-block">Home</a>
+        <a href="/" class="w3-button w3-block">Home</a>
       </div>
       {% if loggedIn %}
       <div class="w3-col s4">
-        <a href="#profile" class="w3-button w3-block">Profile</a>
+        <a href="/" class="w3-button w3-block">Profile</a>
       </div>
       <div class="w3-col s4">
-        <a href="#" class="w3-button w3-block">Logout</a>
+        <a href="/" class="w3-button w3-block">Logout</a>
       </div>
       {% else %}
       <div class="w3-col s4">
-        <a href="#register" class="w3-button w3-block">Register</a>
+        <a href="/" class="w3-button w3-block">Register</a>
       </div>
       <div class="w3-col s4">
-        <a href="#login" class="w3-button w3-block">Login</a>
+        <a href="/" class="w3-button w3-block">Login</a>
       </div>
       {% endif %}
     </div>
@@ -123,9 +123,11 @@
       <div class="form-group">
         <label for="location">Location</label>
         <button id="selectLocation" class="btn"><i class="fa fa-map-marker fa-2x"></i></button>
+        <input type="hidden" name="lat" id="lat" value="42.666032" readonly="readonly" />
+        <input type="hidden" name="lng" id="lng" value="23.373320" readonly="readonly" />
         <div id="map"></div>
       </div>
-      <button id="submitForm" type="submit" class="btn btn-primary">Submit</button>
+      <button id="submitForm" type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
     </form>
   </div>
   <!-- footer -->
