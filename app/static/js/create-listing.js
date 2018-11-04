@@ -1,4 +1,5 @@
 let mapNotShown = true;
+let marker;
 
 function initMap() {
   const position = { lat: 42.6977, lng: 23.3219 };
@@ -7,6 +8,26 @@ function initMap() {
   const map = new google.maps.Map(mapElement, {
     center: position,
     zoom: 13,
+  });
+
+  function placeMarker(location) {
+    if (marker) {
+      marker.setMap(null);
+    }
+    marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      animation: google.maps.Animation.DROP,
+    });
+  }
+
+  google.maps.event.addListener(map, 'click', function(event) {
+    placeMarker(event.latLng);
+
+    latToSend = event.latLng.lat();
+    document.getElementById('lat').value = latToSend;
+    lngToSend = event.latLng.lng();
+    document.getElementById('lng').value = lngToSend;
   });
 
   $('#map').show();
