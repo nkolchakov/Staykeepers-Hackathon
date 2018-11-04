@@ -31,9 +31,24 @@ def allListings():
     listingsDto = dataprovider.getListings()
     return render_template('listings.html', listings = listingsDto)
 
+
 @app.route('/createListing')
 def createListing():
     return render_template('create-listing.html')
+
+# ImmutableMultiDict([('user', 'asdas'), ('price', '12'), ('guests', '1'), 
+# ('bedrooms', '1'), ('beds', '1'), ('baths', '1'),
+#  ('amenities', ''), ('description', '')])
+@app.route('/createListing', methods=['POST'])
+def create():
+    user = request.form['user']
+    guests = request.form['guests']
+    # image = request.form['image']
+
+    print(request.files)
+    print(request.form)
+
+    return jsonify()
 
 
 # If we're running in stand alone mode, run the application
