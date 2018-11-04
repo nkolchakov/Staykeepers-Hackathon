@@ -84,7 +84,10 @@ user = createUser()
 db.session.add(user)
 
 listing = createListing()
+listing.images = [createImage() for i in range(0,5)]
+
 listing2 = createListing()
+listing2.images = [createImage() for i in range(0,5)]
 
 print(listing.isDeleted)
 

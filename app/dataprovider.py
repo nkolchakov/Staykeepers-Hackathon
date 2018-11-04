@@ -1,6 +1,17 @@
 from models import *
+from server import db
+from random import randint
 import requests
 import json
+import datetime
+
+
+pathImages = [
+    '../static/imgs/1.png',
+    '../static/imgs/2.png',
+    '../static/imgs/3.png',
+    '../static/imgs/4.png'
+]
 
 def getListings():
     listings = Listing.query.all()
@@ -14,7 +25,38 @@ def getListingById(id):
     dto = listingToDto(listing)
     return dto
 
+def createListing(data):
+    listing = Listing(
+        price = data['price'][0],
+        address = data['address'][0],
+        latitude =  data['lat'][0],
+        longitude = data['lng'][0],
+        rating = randint(0,6),
+        createdDate = datetime.datetime.now(),
+        description = data['description'][0],
+        guests = data['guests'][0],
+        bedrooms = data['bedrooms'][0],
+        beds = data['beds'][0],
+        baths = data['baths'][0],
+        isDeleted = 0
+    )
+    
+    amenities = []
+    for a in data['amenities']:
+        print(a)
+        amenity = Amenity(goody_title = a)
+        amenities.append(amenity)
 
+    images = []
+    for i in pathImages:
+        image = Image(image_path=i)
+        images.append(image)
+    
+    listing.amenities = amenities
+    listing.images = images
+
+    db.session.add(listing)
+    db.session.commit()
 
 def listingToDto(listing, checkLandmarks = True):
     imgs = [img.image_path  for img in  listing.images] * 3
@@ -49,7 +91,7 @@ def listingToDto(listing, checkLandmarks = True):
         "rating": listing.rating,
         "user": {"name": username},
         "images": imgs,
-        "amenities": listing.amenities,
+        "amenities": [am.goody_title for am in listing.amenities],
         "description": listing.description
     }
 
