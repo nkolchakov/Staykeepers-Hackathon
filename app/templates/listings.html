@@ -51,8 +51,12 @@
             <div class="card">
               <img class="card-img-top img-fluid" src="{{ listing.images[0] }}" alt="Card image cap">
               <div class="card-body">
+                <a href="/">
                 <h4 class="card-title display-4">{{ loop.index }}<i class="fa fa-hotel" aria-hidden="true"></i> {{ listing.title }}</h4>
-                <p class="card-text text-secondary"> created by <strong style="font-style: oblique">{{ listing.user.name }}</strong></p>
+                </a>
+                <h3>
+                  <i class="fa fa-eur" aria-hidden="true" style="font-size:20px"></i><span style="font-size:20px"><strong>{{ listing.price }}</strong></span> per night
+                </h3>
                 <div class="stars-outer">
                   <div id="rating{{ loop.index }}" class="stars-inner"></div>
                 </div>
@@ -64,8 +68,12 @@
             <div class="card">
               <img class="card-img-top img-fluid" src="{{ listing.images[0] }}" alt="Card image cap">
               <div class="card-body">
+                <a href="/">
                 <h4 class="card-title display-4">{{ loop.index }}<i class="fa fa-hotel" aria-hidden="true"></i> {{ listing.title }}</h4>
-                <p class="card-text text-secondary"> created by <strong style="font-style: oblique">{{ listing.user.name }}</strong></p>
+                </a>
+                <h3>
+                  <i class="fa fa-eur" aria-hidden="true" style="font-size:20px"></i><span style="font-size:20px"><strong>{{ listing.price }}</strong></span> per night
+                </h3>
                 <div class="stars-outer">
                   <div id="rating{{ loop.index }}" class="stars-inner"></div>
                 </div>
@@ -75,17 +83,17 @@
           {% endif %}
           {% endfor %}
         </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <a class="carousel-control carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <a class="carousel-control carousel-control-next" href="#myCarousel" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
       </div>
     </div>
-    <button id="createListing" type="button" class="btn btn-primary btn-lg btn-block">Create Listing</button>
+    <button id="createListing" type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-list-ul"></i> Create Listing</button>
   </div>
   <!-- footer -->
   <footer class="w3-container w3-padding-32 w3-light-grey w3-center">

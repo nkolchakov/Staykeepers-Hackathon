@@ -59,6 +59,11 @@
     display: block;
     visibility: visible;
   }
+
+  .carousel-control {
+    height: 25%;
+    margin-top: 130px;
+  }
 }
 
 /*rating*/

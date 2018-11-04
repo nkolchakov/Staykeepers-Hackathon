@@ -41,6 +41,10 @@ def home():
 def test():
     return render_template('listings.html', listings = [mockListing] * 4)
 
+@app.route('/test1')
+def test1():
+    return render_template('create-listing.html')
+
 @app.route('/listing')
 def details():
     id = request.args.get('id')
